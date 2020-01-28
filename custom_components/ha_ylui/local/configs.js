@@ -17,7 +17,7 @@ YL.static = {
   lockedApps: ['yl-system', 'yl-color-picker', 'ylui-fa', 'yl-browser', 'yl-server'], // 锁定的应用（不允许被脚本修改）
   trustedApps: ['yl-server'], // 受信任的应用（可以使用敏感API）
   debug: false,//启用更多调试信息
-  beforeOnloadEnable: true,//启用关闭前询问（打包app时请关闭防止出错）
+  beforeOnloadEnable: false,//启用关闭前询问（打包app时请关闭防止出错）
   WarningPerformanceInIE: true,//在IE下提示体验不佳信息
   languages: {}, //推荐留空，自动从文件加载
   changeable: true,//存档数据是否可被普通用户修改
