@@ -27,4 +27,6 @@ YL.onLoad(function () {
       alert('YLUI读取配置错误，初始化失败');
     }
   });
+
+  
 });

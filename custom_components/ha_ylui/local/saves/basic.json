@@ -378,7 +378,7 @@
       "customTile": "",
       "urlRandomToken": true
     },
-    "ylui-image-host": {
+    "ylui-webui-aria2": {
       "addressBar": false,
       "autoRun": 0,
       "background": false,
@@ -399,15 +399,15 @@
         "y": "y*0.05"
       },
       "version": "1.0.0",
-      "poweredBy": "imgchr.com",
+      "poweredBy": "webui-aria2",
       "resizable": true,
       "single": true,
       "size": {
         "height": "y*0.8-80",
         "width": "x*0.8"
       },
-      "title": "路过图床",
-      "url": "https://imgchr.com/",
+      "title": "Aria2下载管理",
+      "url": "./res/apps/webui-aria2/index.html",
       "customTile": "",
       "urlRandomToken": true
     }
