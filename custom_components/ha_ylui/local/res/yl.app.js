@@ -191,7 +191,7 @@ if (window.attachEvent) {
   window.addEventListener('message', ylOnMessage)
   // 监听数据变化
   window.addEventListener('storage', function (e) {
-    this.console.log(e);
+    console.log(e);
     if (e.key === 'ylui-storage') {
       if (e.oldValue != e.newValue) {
         // 更新
