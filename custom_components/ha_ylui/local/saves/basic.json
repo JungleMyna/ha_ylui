@@ -2,7 +2,7 @@
   "configs": {
     "topTaskBar": false,
     "sound": false,
-    "wallpaper": "./res/img/wallpapers/bg1.jpg",
+    "wallpaper": "./res/img/wallpapers/bg8.jpg",
     "wallpaperBlur": false,
     "wallpaperSlide": false,
     "wallpaperSlideRandom": true,
@@ -11,7 +11,7 @@
     "wallpaperSlideIndex": 8,
     "openMax": 9,
     "idCounter": 170,
-    "themeColor": "rgba(2,35,64,1)",
+    "themeColor": "rgba(104,98,102,1)",
     "autoThemeColor": true,
     "wallpapers": [
       {
@@ -212,40 +212,6 @@
       "customTile": "",
       "urlRandomToken": true
     },
-    "yl-app-home": {
-      "addressBar": false,
-      "autoRun": 0,
-      "background": false,
-      "badge": 0,
-      "desc": "YLUI官方网站",
-      "icon": {
-        "type": "fa",
-        "content": "yoast",
-        "bg": "#6b96cf"
-      },
-      "openMode": "normal",
-      "plugin": false,
-      "position": {
-        "autoOffset": true,
-        "left": true,
-        "top": true,
-        "x": "x*0.1",
-        "y": "y*0.1"
-      },
-      "version": "1.0.0",
-      "poweredBy": "Yuri2",
-      "resizable": true,
-      "single": true,
-      "size": {
-        "height": "y*0.8-80",
-        "width": "x*0.8"
-      },
-      "title": "YLUI 官网",
-      "url": "https://ylui.yuri2.cn",
-      "customTile": "",
-      "urlRandomToken": true
-    },
-  
     "ylui-documents": {
       "addressBar": false,
       "autoRun": 0,
@@ -279,72 +245,6 @@
       "customTile": "",
       "urlRandomToken": false
     },
-    "ylui-gitee": {
-      "addressBar": false,
-      "autoRun": 0,
-      "background": false,
-      "badge": 0,
-      "desc": "",
-      "icon": {
-        "type": "str",
-        "content": "G",
-        "bg": "rgb(216,2,18)"
-      },
-      "openMode": "normal",
-      "plugin": false,
-      "position": {
-        "autoOffset": true,
-        "left": true,
-        "top": true,
-        "x": "x*0.05",
-        "y": "y*0.05"
-      },
-      "version": "1.0.0",
-      "poweredBy": "",
-      "resizable": true,
-      "single": false,
-      "size": {
-        "height": "y*0.8-80",
-        "width": "x*0.8"
-      },
-      "title": "码云仓库",
-      "url": "https://gitee.com:/yuri2/ylui",
-      "customTile": "",
-      "urlRandomToken": true
-    },
-    "ylui-github": {
-      "addressBar": false,
-      "autoRun": 0,
-      "background": false,
-      "badge": 0,
-      "desc": "github仓库地址",
-      "icon": {
-        "type": "fa",
-        "content": "github",
-        "bg": "#292929"
-      },
-      "openMode": "outer",
-      "plugin": false,
-      "position": {
-        "autoOffset": true,
-        "left": true,
-        "top": true,
-        "x": "x*0.05",
-        "y": "y*0.05"
-      },
-      "version": "1.0.0",
-      "poweredBy": "github",
-      "resizable": false,
-      "single": false,
-      "size": {
-        "height": "y*0.8-80",
-        "width": "x*0.8"
-      },
-      "title": "github",
-      "url": "https://github.com:/yuri2peter/ylui",
-      "customTile": "",
-      "urlRandomToken": false
-    },
     "ylui-fa": {
       "addressBar": false,
       "autoRun": 0,
@@ -366,15 +266,15 @@
         "y": "y*0.05"
       },
       "version": "1.0.0",
-      "poweredBy": "Font Awesome",
+      "poweredBy": "Material Design Icons",
       "resizable": true,
       "single": true,
       "size": {
         "height": "y*0.8-80",
         "width": "x*0.8"
       },
-      "title": "Font Awesome",
-      "url": "https://fontawesome.com:/cheatsheet",
+      "title": "MDI图标",
+      "url": "./res/apps/mdi-font/preview.html",
       "customTile": "",
       "urlRandomToken": true
     },
@@ -426,33 +326,10 @@
       "hash": ""
     },
     {
-      "app": "yl-app-home",
-      "title": "YLUI 官网",
+      "app": "ylui-webui-aria2",
+      "title": "Aria2下载管理",
       "params": {},
       "hash": ""
-    },
-    {
-      "title": "代码库",
-      "children": [
-        {
-          "app": "ylui-documents",
-          "title": "在线文档",
-          "params": {},
-          "hash": ""
-        },
-        {
-          "app": "ylui-github",
-          "title": "github",
-          "params": {},
-          "hash": ""
-        },
-        {
-          "app": "ylui-gitee",
-          "title": "码云仓库",
-          "params": {},
-          "hash": ""
-        }
-      ]
     }
   ],
   "tiles": [
@@ -461,7 +338,7 @@
       "data": [
         {
           "x": 0,
-          "y": 6,
+          "y": 2,
           "w": 2,
           "h": 2,
           "app": "yl-app-store",
@@ -472,7 +349,7 @@
         },
         {
           "x": 0,
-          "y": 4,
+          "y": 0,
           "w": 4,
           "h": 2,
           "app": "yl-system",
@@ -483,7 +360,7 @@
         },
         {
           "x": 4,
-          "y": 4,
+          "y": 0,
           "w": 2,
           "h": 2,
           "app": "yl-browser",
@@ -493,19 +370,8 @@
           "hash": ""
         },
         {
-          "x": 0,
-          "y": 0,
-          "w": 6,
-          "h": 4,
-          "app": "yl-app-home",
-          "title": "YLUI 官网",
-          "i": "147",
-          "params": {},
-          "hash": ""
-        },
-        {
           "x": 2,
-          "y": 6,
+          "y": 2,
           "w": 4,
           "h": 2,
           "app": "ylui-documents",
@@ -539,12 +405,6 @@
         "params": {},
         "hash": ""
       },
-      "itemPushed-89": {
-        "app": "yl-app-home",
-        "title": "YLUI 官网",
-        "params": {},
-        "hash": ""
-      },
       "itemPushed-96": {
         "app": "yl-system",
         "title": "系统设置",
@@ -560,18 +420,6 @@
       "itemPushed-153": {
         "app": "ylui-documents",
         "title": "在线文档",
-        "params": {},
-        "hash": ""
-      },
-      "itemPushed-155": {
-        "app": "ylui-gitee",
-        "title": "码云仓库",
-        "params": {},
-        "hash": ""
-      },
-      "itemPushed-157": {
-        "app": "ylui-github",
-        "title": "github",
         "params": {},
         "hash": ""
       }
