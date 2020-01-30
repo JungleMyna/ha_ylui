@@ -12,14 +12,14 @@ from homeassistant.components.http import HomeAssistantView
 _LOGGER = logging.getLogger(__name__)
 
 DOMAIN = 'ha_ylui'
-VERSION = '1.0.1'
-URL = '/ha-ylui-api-' + str(uuid.uuid4())
+VERSION = '1.1'
+URL = '/ha_ylui-api'
 ROOT_PATH = URL + '/' + VERSION
 
 def setup(hass, config):
     cfg  = config[DOMAIN]
     _name = cfg.get('name', 'Web桌面')
-    _icon = cfg.get('icon', 'mdi:map-marker-radius')
+    _icon = cfg.get('icon', 'mdi:windows')
     # 注册静态目录
     local = hass.config.path("custom_components/ha_ylui/local")
     if os.path.isdir(local):
@@ -46,12 +46,23 @@ class HassGateView(HomeAssistantView):
     async def post(self, request):
         hass = request.app["hass"]
         try:
-            res = await request.json()  
+            res = await request.json()
             local = hass.config.path(".storage")
-            if os.path.isdir(local) == False:
-                fd = open(local + '/ha_ylui-config.json', mode="w", encoding="utf-8")
+            cfg_file = local + '/ha_ylui.config'
+            _type = res['type']
+            if _type == 'set':
+                fd = open(cfg_file, mode="w", encoding="utf-8")
+                fd.write(json.dumps(res['data']))
                 fd.close()
-            return self.json(res)
+                return self.json({'code': 0, 'msg': '保存成功'})
+            elif _type == 'get':
+                fd = open(cfg_file, mode="r", encoding="utf-8")
+                _str = fd.read()
+                fd.close()
+                return self.json({
+                    'code': 0,
+                    'data': json.loads(_str)
+                })
         except Exception as e:
             print(e)
             return self.json({'code':1, 'msg': '出现异常'})

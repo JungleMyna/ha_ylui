@@ -1,20 +1,3 @@
-; (() => {
-  // 设置全屏模式
-  try {
-      let haPanelIframe = top.document.body
-          .querySelector("home-assistant")
-          .shadowRoot.querySelector("home-assistant-main")
-          .shadowRoot.querySelector("app-drawer-layout partial-panel-resolver ha-panel-iframe").shadowRoot
-      let ha_card = haPanelIframe.querySelector("iframe");
-      ha_card.style.position = 'absolute'
-      haPanelIframe.querySelector('app-toolbar').style.display = 'none'
-      ha_card.style.top = '0'
-      ha_card.style.height = '100%'
-  } catch (ex) {
-
-  }
-})();
-
 window.YL = {
   info: {
     softwareName: 'YLUI',
@@ -576,7 +559,7 @@ window.YL = {
     loadScript: function (url, callback) {
       var script = document.createElement("script");
       script.type = "text/javascript";
-      if (typeof(callback) !== "undefined") {
+      if (typeof (callback) !== "undefined") {
         if (script.readyState) {
           script.onreadystatechange = function () {
             if (script.readyState === "loaded" || script.readyState === "complete") {
@@ -598,7 +581,7 @@ window.YL = {
       style.type = "text/css";
       style.rel = "stylesheet";
       style.href = url;
-      if (typeof(callback) !== "undefined") {
+      if (typeof (callback) !== "undefined") {
         if (style.readyState) {
           style.onreadystatechange = function () {
             if (style.readyState === "loaded" || script.readyState === "complete") {
@@ -660,7 +643,7 @@ window.YL = {
           callback(link);
         }
       };
-      if (typeof(callback) !== "undefined") {
+      if (typeof (callback) !== "undefined") {
         if (link.readyState) {
           link.onreadystatechange = function () {
             if (link.readyState === "loaded" || link.readyState === "complete") {
