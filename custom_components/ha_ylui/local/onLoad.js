@@ -26,25 +26,19 @@ YL.onLoad(function () {
     if (e.key === 'ylui-storage') {
       if (e.oldValue != e.newValue) {
         // 更新
-        this.fetch(`${top.location.pathname}-api`, {
-          method: 'post',
-          body: JSON.stringify({
-            type: 'set',
-            data: e.newValue
-          })
-        }).then(res => res.json()).then(res => {
+        YL.static.post({
+          type: 'set',
+          data: e.newValue
+        }).then(res => {
           console.log(res)
         })
       }
     }
   });
   // 加载数据
-  fetch(`${top.location.pathname}-api`, {
-    method: 'post',
-    body: JSON.stringify({
-      type: 'get'
-    })
-  }).then(res => res.json()).then(res => {
+  YL.static.post({
+    type: 'get'
+  }).then(res => {
     if (res.code === 0) {
       YL.init(res.data)
     } else {

@@ -12,7 +12,7 @@ from homeassistant.components.http import HomeAssistantView
 _LOGGER = logging.getLogger(__name__)
 
 DOMAIN = 'ha_ylui'
-VERSION = '1.1'
+VERSION = '1.1.1'
 URL = '/ha_ylui-api'
 ROOT_PATH = URL + '/' + VERSION
 
