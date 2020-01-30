@@ -286,7 +286,7 @@
       "desc": "",
       "icon": {
         "type": "fa",
-        "content": "image",
+        "content": "cloud-download",
         "bg": "#72b076"
       },
       "openMode": "normal",
@@ -306,7 +306,7 @@
         "height": "y*0.8-80",
         "width": "x*0.8"
       },
-      "title": "Aria2下载管理",
+      "title": "Aria2下载",
       "url": "./res/apps/webui-aria2/index.html",
       "customTile": "",
       "urlRandomToken": true

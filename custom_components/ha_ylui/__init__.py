@@ -52,7 +52,7 @@ class HassGateView(HomeAssistantView):
             _type = res['type']
             if _type == 'set':
                 fd = open(cfg_file, mode="w", encoding="utf-8")
-                fd.write(json.dumps(res['data']))
+                fd.write(res['data'])
                 fd.close()
                 return self.json({'code': 0, 'msg': '保存成功'})
             elif _type == 'get':
