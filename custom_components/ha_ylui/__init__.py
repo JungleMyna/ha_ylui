@@ -41,7 +41,7 @@ class HassGateView(HomeAssistantView):
 
     url = URL
     name = DOMAIN
-    requires_auth = False
+    requires_auth = True
     
     async def post(self, request):
         hass = request.app["hass"]

@@ -10,7 +10,7 @@
     "wallpaperSlideTime": 1519442460788,
     "wallpaperSlideIndex": 8,
     "openMax": 9,
-    "idCounter": 170,
+    "idCounter": 171,
     "themeColor": "rgba(104,98,102,1)",
     "autoThemeColor": true,
     "wallpapers": [
@@ -320,16 +320,27 @@
       "hash": ""
     },
     {
-      "app": "yl-app-store",
-      "title": "应用商店",
-      "params": {},
-      "hash": ""
-    },
-    {
-      "app": "ylui-webui-aria2",
-      "title": "Aria2下载管理",
-      "params": {},
-      "hash": ""
+      "title": "内置功能",
+      "children": [
+        {
+          "app": "ylui-webui-aria2",
+          "title": "Aria2下载管理",
+          "params": {},
+          "hash": ""
+        },
+        {
+          "app": "ylui-fa",
+          "title": "MDI图标",
+          "params": {},
+          "hash": ""
+        },
+        {
+          "app": "yl-app-store",
+          "title": "应用商店",
+          "params": {},
+          "hash": ""
+        }
+      ]
     }
   ],
   "tiles": [

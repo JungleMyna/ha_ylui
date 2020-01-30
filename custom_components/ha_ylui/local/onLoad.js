@@ -46,8 +46,7 @@ YL.onLoad(function () {
     })
   }).then(res => res.json()).then(res => {
     if (res.code === 0) {
-      let obj = JSON.parse(res.data)
-      YL.init(obj)
+      YL.init(res.data)
     } else {
       throw new Error('没有配置文件')
     }
