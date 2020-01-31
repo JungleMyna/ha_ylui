@@ -27,13 +27,13 @@ YL.static = {
   /** YLUI注册信息 */
   authorization: '社区版',//授权类型
   serialNumber: null,//序列号
-  post(data) {
+  async post(data) {
     try {
       let hass = top.document.querySelector('home-assistant').hass
       let { expired } = hass.auth
       // 过期
       if (expired) {
-        hass.auth.refreshAccessToken()
+        await hass.auth.refreshAccessToken()
       }
       return fetch(`${top.location.pathname}-api`, {
         method: 'post',
