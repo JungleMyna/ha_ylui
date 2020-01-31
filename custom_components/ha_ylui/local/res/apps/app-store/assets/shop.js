@@ -96,7 +96,7 @@ YLApp.onReady(function () {
               "bg": "#00897b"
             },
             desc: 'Aria2下载管理',
-            "poweredBy": "baidu",
+            "poweredBy": "webui-aria2",
           }),
         },
         shortcuts: ['ylui-apps-aria2'],
@@ -104,6 +104,43 @@ YLApp.onReady(function () {
           'ylui-apps-aria2': {
             "app": "ylui-apps-aria2",
             "title": "Aria2",
+            "params": {},
+            "hash": ""
+          },
+        },
+      }
+    },
+    './apps/todoist': {
+      title: 'Todoist',
+      desc: '最好的待办清单应用',
+      open: _.merge(getAppDataTemplate(), {
+        title: 'Todoist',
+        url: 'https://todoist.com/app',
+        "icon": {
+          "type": "fa",
+          "content": "list-ol",
+          "bg": "#db4c3f"
+        },
+      }),
+      setup: {
+        apps: {
+          'ylui-apps-baidu': _.merge(getAppDataTemplate(), {
+            title: 'Todoist',
+            url: 'https://todoist.com/app',
+            "icon": {
+              "type": "fa",
+              "content": "list-ol",
+              "bg": "#db4c3f"
+            },
+            desc: '最好的待办清单应用',
+            "poweredBy": "baidu",
+          }),
+        },
+        shortcuts: ['ylui-apps-todoist'],
+        menu: {
+          'ylui-apps-todoist': {
+            "app": "ylui-apps-todoist",
+            "title": "Todoist",
             "params": {},
             "hash": ""
           },
