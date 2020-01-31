@@ -14,7 +14,7 @@ YL.static = {
   /** YLUI基础设置 */
   lang: 'zh-cn', //语言
   localStorageName: "ylui-storage", //ls存储名
-  lockedApps: ['yl-system', 'yl-color-picker', 'ylui-fa', 'yl-browser', 'yl-server', 'ylui-webui-aria2'], // 锁定的应用（不允许被脚本修改）
+  lockedApps: ['yl-system', 'yl-color-picker', 'ylui-fa', 'yl-browser', 'yl-server', 'yl-app-store'], // 锁定的应用（不允许被脚本修改）
   trustedApps: ['yl-server'], // 受信任的应用（可以使用敏感API）
   debug: false,//启用更多调试信息
   beforeOnloadEnable: false,//启用关闭前询问（打包app时请关闭防止出错）
@@ -28,18 +28,23 @@ YL.static = {
   authorization: '社区版',//授权类型
   serialNumber: null,//序列号
   post(data) {
-    let hass = top.document.querySelector('home-assistant').hass
-    let { expired } = hass.auth
-    // 过期
-    if (expired) {
-      hass.auth.refreshAccessToken()
+    try {
+      let hass = top.document.querySelector('home-assistant').hass
+      let { expired } = hass.auth
+      // 过期
+      if (expired) {
+        hass.auth.refreshAccessToken()
+      }
+      return fetch(`${top.location.pathname}-api`, {
+        method: 'post',
+        headers: {
+          authorization: `${hass.auth.data.token_type} ${hass.auth.accessToken}`
+        },
+        body: JSON.stringify(data)
+      }).then(res => res.json())
+    } catch (ex) {
+      return Promise.reject(ex)
     }
-    return fetch(`${top.location.pathname}-api`, {
-      method: 'post',
-      headers: {
-        authorization: `${hass.auth.data.token_type} ${hass.auth.accessToken}`
-      },
-      body: JSON.stringify(data)
-    }).then(res => res.json())
+
   }
 };

@@ -63,6 +63,19 @@ class HassGateView(HomeAssistantView):
                     'code': 0,
                     'data': json.loads(_str)
                 })
+            elif _type == 'get_listdir':
+                _path = hass.config.path("./")
+                files = os.listdir(_path)
+                _list = []
+                for f in files:
+                    _list.append({
+                        'name': f,
+                        'isdir': os.path.isdir(_path+ '/' + f)
+                    })
+                return self.json({
+                    'code': 0,
+                    'data': _list
+                })
         except Exception as e:
             print(e)
             return self.json({'code':1, 'msg': '出现异常'})

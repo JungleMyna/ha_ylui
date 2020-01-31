@@ -5,9 +5,8 @@
 [YLUI](https://github.com/yuri2peter/ylui)
 
 # 使用方式
-'''
+```
 
 ha_ylui:
-        
-
-'''
+   
+```

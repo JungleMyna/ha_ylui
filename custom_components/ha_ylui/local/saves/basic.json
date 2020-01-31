@@ -208,7 +208,7 @@
         "width": "x*0.8"
       },
       "title": "应用商店",
-      "url": "https://appstore.ylui.yuri2.cn",
+      "url": "./res/apps/app-store/index.html",
       "customTile": "",
       "urlRandomToken": true
     },
