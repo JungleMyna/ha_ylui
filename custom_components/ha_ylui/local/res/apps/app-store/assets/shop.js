@@ -124,7 +124,7 @@ YLApp.onReady(function () {
       }),
       setup: {
         apps: {
-          'ylui-apps-baidu': _.merge(getAppDataTemplate(), {
+          'ylui-apps-todoist': _.merge(getAppDataTemplate(), {
             title: 'Todoist',
             url: 'https://todoist.com/app',
             "icon": {
@@ -133,7 +133,7 @@ YLApp.onReady(function () {
               "bg": "#db4c3f"
             },
             desc: '最好的待办清单应用',
-            "poweredBy": "baidu",
+            "poweredBy": "todoist",
           }),
         },
         shortcuts: ['ylui-apps-todoist'],
