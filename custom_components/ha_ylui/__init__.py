@@ -12,7 +12,7 @@ from homeassistant.components.http import HomeAssistantView
 _LOGGER = logging.getLogger(__name__)
 
 DOMAIN = 'ha_ylui'
-VERSION = '1.1.2'
+VERSION = '1.1.3'
 URL = '/ha_ylui-api'
 ROOT_PATH = URL + '/' + VERSION
 
@@ -64,7 +64,11 @@ class HassGateView(HomeAssistantView):
                     'data': json.loads(_str)
                 })
             elif _type == 'get_listdir':
-                _path = hass.config.path("./")
+                # 获取文件列表
+                _p = ''
+                if 'path' in res:
+                    _p = res['path']
+                _path = hass.config.path("./" + _p)
                 files = os.listdir(_path)
                 _list = []
                 for f in files:
@@ -76,6 +80,25 @@ class HassGateView(HomeAssistantView):
                     'code': 0,
                     'data': _list
                 })
+            elif _type == 'file_read':
+                # 读取文件
+                _p = res['path']
+                _path = hass.config.path("./" + _p)
+                fd = open(_path, mode="r", encoding="utf-8")
+                _str = fd.read()
+                fd.close()
+                return self.json({
+                    'code': 0,
+                    'data': _str
+                })
+            elif _type == 'file_save':
+                # 写入文件
+                _p = res['path']
+                _path = hass.config.path("./" + _p)
+                fd = open(_path, mode="w", encoding="utf-8")
+                fd.write(res['data'])
+                fd.close()
+                return self.json({'code': 0, 'msg': '保存成功'})
         except Exception as e:
             print(e)
             return self.json({'code':1, 'msg': '出现异常'})
