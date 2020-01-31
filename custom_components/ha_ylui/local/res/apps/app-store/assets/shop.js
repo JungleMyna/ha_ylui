@@ -147,6 +147,43 @@ YLApp.onReady(function () {
         },
       }
     },
+    './apps/fontawesome': {
+      title: 'Font Awesome',
+      desc: 'Font Awesome中文网',
+      open: _.merge(getAppDataTemplate(), {
+        title: 'Font Awesome',
+        url: 'http://www.fontawesome.com.cn/faicons/',
+        "icon": {
+          "type": "fa",
+          "content": "flag",
+          "bg": "#1b926c"
+        },
+      }),
+      setup: {
+        apps: {
+          'ylui-apps-fontawesome': _.merge(getAppDataTemplate(), {
+            title: 'Font Awesome',
+            url: 'http://www.fontawesome.com.cn/faicons/',
+            "icon": {
+              "type": "fa",
+              "content": "flag",
+              "bg": "#1b926c"
+            },
+            desc: 'Font Awesome中文网',
+            "poweredBy": "fontawesome",
+          }),
+        },
+        shortcuts: ['ylui-apps-fontawesome'],
+        menu: {
+          'ylui-apps-fontawesome': {
+            "app": "ylui-apps-fontawesome",
+            "title": "Font Awesome",
+            "params": {},
+            "hash": ""
+          },
+        },
+      }
+    },
     './apps/baidu': {
       title: '百度一下',
       desc: '百度一下，你就知道。',
@@ -273,7 +310,7 @@ YLApp.onReady(function () {
     (function () {
       var appData = apps[path];
       var app = $('<div class="app">');
-      var cover = $('<img class="cover">');
+      var cover = $(`<img class="cover" onerror="this.src='./assets/application.png'">`);
       var title = $('<div class="title">');
       var desc = $('<div class="desc">');
       var btns = $('<div class="btn-group">\n' +
