@@ -36,6 +36,80 @@ function getAppDataTemplate() {
 }
 YLApp.onReady(function () {
   var apps = {
+    './apps/mdi-font': {
+      title: 'MDI图标',
+      desc: 'Material Design Icons，这里修改了点击复制的时候自动转成HA里使用的格式',
+      open: _.merge(getAppDataTemplate(), {
+        title: 'MDI字体图标',
+        url: urlStore + '/apps/mdi-font/index.html',
+        "icon": {
+          "type": "fa",
+          "content": "flag",
+          "bg": "#1588F5"
+        },
+      }),
+      setup: {
+        apps: {
+          'ylui-apps-mdifont': _.merge(getAppDataTemplate(), {
+            title: 'MDI图标',
+            url: urlStore + '/apps/mdi-font/index.html',
+            "icon": {
+              "type": "fa",
+              "content": "flag",
+              "bg": "#1588F5"
+            },
+            desc: 'Material Design Icons',
+            "poweredBy": "Google",
+          }),
+        },
+        shortcuts: ['ylui-apps-mdifont'],
+        menu: {
+          'ylui-apps-mdifont': {
+            "app": "ylui-apps-mdifont",
+            "title": "MDI图标",
+            "params": {},
+            "hash": ""
+          },
+        },
+      }
+    },
+    './apps/webui-aria2': {
+      title: 'Aria2',
+      desc: 'Aria2下载管理，开启服务命令：aria2c --enable-rpc --rpc-listen-all --rpc-secret=密码令牌',
+      open: _.merge(getAppDataTemplate(), {
+        title: 'Aria2',
+        url: urlStore + '/apps/webui-aria2/index.html',
+        "icon": {
+          "type": "fa",
+          "content": "cloud-download",
+          "bg": "#1588F5"
+        },
+      }),
+      setup: {
+        apps: {
+          'ylui-apps-aria2': _.merge(getAppDataTemplate(), {
+            title: 'Aria2',
+            url: urlStore + '/apps/webui-aria2/index.html',
+            "icon": {
+              "type": "fa",
+              "content": "cloud-download",
+              "bg": "#1588F5"
+            },
+            desc: 'Aria2下载管理',
+            "poweredBy": "baidu",
+          }),
+        },
+        shortcuts: ['ylui-apps-aria2'],
+        menu: {
+          'ylui-apps-aria2': {
+            "app": "ylui-apps-aria2",
+            "title": "Aria2",
+            "params": {},
+            "hash": ""
+          },
+        },
+      }
+    },
     './apps/baidu': {
       title: '百度一下',
       desc: '百度一下，你就知道。',
