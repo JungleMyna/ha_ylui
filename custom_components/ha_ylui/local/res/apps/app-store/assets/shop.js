@@ -45,7 +45,7 @@ YLApp.onReady(function () {
         "icon": {
           "type": "fa",
           "content": "flag",
-          "bg": "#1588F5"
+          "bg": "#2296f3"
         },
       }),
       setup: {
@@ -56,7 +56,7 @@ YLApp.onReady(function () {
             "icon": {
               "type": "fa",
               "content": "flag",
-              "bg": "#1588F5"
+              "bg": "#2296f3"
             },
             desc: 'Material Design Icons',
             "poweredBy": "Google",
@@ -82,7 +82,7 @@ YLApp.onReady(function () {
         "icon": {
           "type": "fa",
           "content": "cloud-download",
-          "bg": "#1588F5"
+          "bg": "#00897b"
         },
       }),
       setup: {
@@ -93,7 +93,7 @@ YLApp.onReady(function () {
             "icon": {
               "type": "fa",
               "content": "cloud-download",
-              "bg": "#1588F5"
+              "bg": "#00897b"
             },
             desc: 'Aria2下载管理',
             "poweredBy": "baidu",
