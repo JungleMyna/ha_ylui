@@ -1,0 +1,52 @@
+.page-shop .app {
+  margin: 10px;
+  width: 320px;
+  padding: 10px;
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 3px 13px 5px #e0e0e0;
+  display: inline-block; }
+  .page-shop .app .cover {
+    width: 320px;
+    height: 210px; }
+  .page-shop .app .title {
+    font-size: 18px;
+    margin: 10px 0; }
+  .page-shop .app .desc {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+    height: 80px; }
+  .page-shop .app .btn-group {
+    text-align: right; }
+    .page-shop .app .btn-group .setup {
+      padding: 4px;
+      background: #1d7db1;
+      color: white;
+      display: inline-block;
+      text-align: center;
+      width: 20%;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s; }
+      .page-shop .app .btn-group .setup:hover {
+        box-shadow: 0 2px 15px 2px #e6e6e6; }
+      .page-shop .app .btn-group .setup:hover {
+        background: #249bdc; }
+    .page-shop .app .btn-group .open {
+      padding: 4px;
+      background: #1d7db1;
+      color: white;
+      display: inline-block;
+      text-align: center;
+      width: 20%;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 5px;
+      background: #a1a1a1; }
+      .page-shop .app .btn-group .open:hover {
+        box-shadow: 0 2px 15px 2px #e6e6e6; }
+      .page-shop .app .btn-group .open:hover {
+        background: #d2d2d2; }
+
+/*# sourceMappingURL=index.css.map */
