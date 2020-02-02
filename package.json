@@ -18,6 +18,8 @@
   "homepage": "https://github.com/shaonianzhentan/ha_ylui#readme",
   "dependencies": {
     "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-router": "^8.0.6",
     "koa-static": "^5.0.0"
   }
 }

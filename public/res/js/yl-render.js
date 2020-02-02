@@ -336,6 +336,14 @@ YL.render = function (data) {
               if (exportJson !== lastExport) {
                 lastExport = exportJson;
                 localStorage.setItem(YL.static.localStorageName, exportJson);
+                // 更新数据
+                YL.static.post({
+                  type: 'set',
+                  data: exportJson
+                }).then(res => {
+                  console.log(res)
+                })
+
                 that.emitWinEvent(0, 'dataChanged');
               }
             } catch (e) {

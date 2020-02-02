@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            outline: none;
+        }
+
+        .pages {
+            width: 100%;
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .page-lock {
+            background-image: url(./image/login.jpg);
+        }
+
+        .page-login {
+            background-image: url(./image/start.jpg);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .today {
+            color: white;
+            position: fixed;
+            left: 50px;
+            bottom: 80px;
+        }
+
+        .today span {
+            display: block;
+        }
+
+        .today span:nth-child(1) {
+            font-size: 86px;
+        }
+
+        .today span:nth-child(2) {
+            font-size: 30px;
+            margin-left: 10px;
+        }
+
+
+        .login-panel {
+            text-align: center;
+            width: 250px;
+            margin: 0 auto;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login-panel img {
+            width: 150px;
+        }
+
+        .login-panel p {
+            font-size: 46px;
+            font-weight: 100;
+            margin: 15px 0;
+            padding-top: 10px;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .login-panel div {
+            border: 1px solid #eee;
+            display: flex;
+        }
+
+        .login-panel input {
+            background: rgba(0, 0, 0, .5);
+            padding: 10px;
+            width: 200px;
+            color: white;
+            margin: 0;
+            border: none;
+        }
+
+        .login-panel button {
+            background: rgba(255, 255, 255, .5);
+            border: none;
+            color: white;
+            width: 36px;
+            cursor: pointer;
+        }
+    </style>
+    <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--锁屏-->
+    <div class="pages page-lock hide">
+        <div class="today">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!--登录-->
+    <div class="pages page-login">
+
+        <div class="login-panel">
+            <img src="./image/os_windows.png" />
+            <p>Windows10</p>
+            <div>
+                <input type="password" />
+                <button><i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+    <script>
+        let ts = document.querySelectorAll('.today span')
+        let weeks = ['日', '一', '二', '三', '四', '五', '六']
+        function formatZero(v) {
+            return v < 10 ? `0${v}` : v
+        }
+        setInterval(() => {
+            let today = new Date()
+            ts[0].textContent = `${formatZero(today.getHours())}:${formatZero(today.getMinutes())}`
+            ts[1].textContent = `${today.getMonth() + 1}月${today.getDate()}日,星期${weeks[today.getDay()]}`
+        }, 1000)
+
+        document.querySelector('.page-lock').onclick = function () {
+            this.classList.toggle('hide')
+            document.querySelector('.page-login').classList.toggle('hide')
+        }
+        // 登录 
+        document.querySelector('.page-login input').onkeyup=function(event){
+            if(event.keyCode === 13){
+                document.querySelector('.page-login button').onclick()        
+            }
+        }
+        document.querySelector('.page-login button').onclick = function () {
+            let value = document.querySelector('.page-login input').value.trim()
+            if (value) {
+                // console.log('开始登录')
+                // fetch('/login', {
+                //     method: 'post',
+                //     body: JSON.stringify({
+                //         pwd: value
+                //     })
+                // }).then(res => res.json()).then(res => {
+                //     console.log(res)
+                // })
+                let today = new Date()
+                today.setMonth(today.getMonth()+1)
+                document.cookie = `uid=${md5(value)}; expire=${today.toGMTString()};`
+                location.href = 'index.html'
+            }
+        }
+    </script>
+</body>
+
+</html>

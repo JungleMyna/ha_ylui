@@ -29,17 +29,8 @@ YL.static = {
   serialNumber: null,//序列号
   async post(data) {
     try {
-      let hass = top.document.querySelector('home-assistant').hass
-      let { expired } = hass.auth
-      // 过期
-      if (expired) {
-        await hass.auth.refreshAccessToken()
-      }
-      return fetch(`${top.location.pathname}-api`, {
+      return fetch(`/`, {
         method: 'post',
-        headers: {
-          authorization: `${hass.auth.data.token_type} ${hass.auth.accessToken}`
-        },
         body: JSON.stringify(data)
       }).then(res => res.json())
     } catch (ex) {
