@@ -36,7 +36,7 @@ router.post('/', function (ctx, next) {
     let code = 1, resData, msg = '出现错误'
     let fl = path.join(__dirname, `./config/${uid}.json`)
     if (type == 'get') {
-        if (fs.existsSync(fs)) {
+        if (fs.existsSync(fl)) {
             code = 0
             resData = fs.readFileSync(fl)
         }
