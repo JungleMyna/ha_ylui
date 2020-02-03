@@ -38,7 +38,7 @@ router.post('/', function (ctx, next) {
     if (type == 'get') {
         if (fs.existsSync(fl)) {
             code = 0
-            resData = fs.readFileSync(fl)
+            resData = fs.readFileSync(fl, 'utf8')
         }
     } else if (type == 'set') {
         code = 0
