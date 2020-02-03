@@ -10,6 +10,10 @@ YL.onLoad(function () {
   YL.static.post({
     type: 'get'
   }).then(res => {
+    if (res.code === 401) {
+      location.href = 'login.html'
+      return
+    }
     if (res.code === 0) {
       YL.init(res.data)
     } else {
