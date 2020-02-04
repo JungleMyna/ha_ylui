@@ -165,7 +165,7 @@
                 // })
                 let today = new Date()
                 today.setMonth(today.getMonth()+1)
-                document.cookie = `uid=${md5(value)}; expire=${today.toGMTString()};`
+                document.cookie = `uid=${md5(value)};path=/;expires=${today.toUTCString()};`
                 location.href = 'index.html'
             }
         }
