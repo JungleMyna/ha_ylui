@@ -5,7 +5,7 @@ const statics = require('koa-static')
 const path = require('path')
 const app = new Koa()
 const router = require('koa-router')()
-
+const request = require('request');
 const koaBody = require('koa-body')
 
 app.use(koaBody({
@@ -50,6 +50,18 @@ router.post('/', function (ctx, next) {
         data: resData,
         msg
     }
+})
+
+
+router.post('/proxy', function (ctx, next) {
+    const params = JSON.parse(ctx.request.body)
+    request(params, function (err, response, body) {
+        if (err) {
+            console.log('出现错误：', err)
+        }
+        ctx.body = body
+    })
+
 })
 
 app.listen(8089)
