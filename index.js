@@ -53,8 +53,9 @@ router.post('/', function (ctx, next) {
 })
 
 
-router.post('/proxy', function (ctx, next) {
-    const params = JSON.parse(ctx.request.body)
+router.post('/proxy', function (ctx, next) {    
+    const params = ctx.request.body
+    console.log(params)
     request(params, function (err, response, body) {
         if (err) {
             console.log('出现错误：', err)
