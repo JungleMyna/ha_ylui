@@ -53,16 +53,23 @@ router.post('/', function (ctx, next) {
 })
 
 
-router.post('/proxy', function (ctx, next) {    
+function fetch(params) {
+    return new Promise((resolve, reject) => {
+        request(params, function (err, response, body) {
+            if (err) {
+                console.log('出现错误：', err)
+                reject(err)
+                return
+            }
+            resolve(body)
+        })
+    })
+}
+
+router.post('/proxy', async function (ctx, next) {
     const params = ctx.request.body
     console.log(params)
-    request(params, function (err, response, body) {
-        if (err) {
-            console.log('出现错误：', err)
-        }
-        ctx.body = body
-    })
-
+    ctx.body = await fetch(params)
 })
 
 app.listen(8089)
