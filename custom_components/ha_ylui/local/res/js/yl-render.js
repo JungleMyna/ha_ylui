@@ -210,9 +210,9 @@ YL.render = function (data) {
         that.runtime.shortcutsGrid.y = parseInt(that.runtime.desktopSize.height / that.runtime.shortcutHeight);
 
         //给窗体发送resize事件
-        that.emitWinEvent(0, 'resize',{
-          width:that.runtime.desktopSize.width,
-          height:that.runtime.desktopSize.height,
+        that.emitWinEvent(0, 'resize', {
+          width: that.runtime.desktopSize.width,
+          height: that.runtime.desktopSize.height,
         });
       },
       initRuntime: function (first) {
@@ -332,9 +332,17 @@ YL.render = function (data) {
           var lastExport = '';
           setInterval(function () {
             try {
-              var exportJson = JSON.stringify(YL.export());
+              let val = YL.export()
+              var exportJson = JSON.stringify(val);
               if (exportJson !== lastExport) {
                 lastExport = exportJson;
+                // console.log('自动保存', YL.static)
+                YL.static.post({
+                  type: 'set',
+                  data: val
+                }).then(res => {
+                  console.log(res)
+                })
                 localStorage.setItem(YL.static.localStorageName, exportJson);
                 that.emitWinEvent(0, 'dataChanged');
               }
@@ -1136,23 +1144,23 @@ YL.render = function (data) {
       },
       desktopMouseDown: function (e) {
         this.hideOpens();
-        !e||this.emitWinEvent(0, 'desktopMouseDown',{
-          x:e.x,
-          y:e.y,
+        !e || this.emitWinEvent(0, 'desktopMouseDown', {
+          x: e.x,
+          y: e.y,
         });
       },
       desktopMouseUp: function (e) {
         this.hideOpens();
-        !e||this.emitWinEvent(0, 'desktopMouseUp',{
-          x:e.x,
-          y:e.y,
+        !e || this.emitWinEvent(0, 'desktopMouseUp', {
+          x: e.x,
+          y: e.y,
         });
       },
       desktopClick: function (e) {
         this.hideOpens();
-        !e||this.emitWinEvent(0, 'desktopClick',{
-          x:e.x,
-          y:e.y,
+        !e || this.emitWinEvent(0, 'desktopClick', {
+          x: e.x,
+          y: e.y,
         });
       },
       desktopContextMenu: function (e) {
@@ -1167,14 +1175,14 @@ YL.render = function (data) {
             that.showDesktop()
           }],
           [YL.util.getStrFa('credit-card') + YL.lang("Personalization"),
-            [
-              [YL.util.getStrFa('paint-brush') + YL.lang("ThemeColor"), function () {
-                YL.open('yl-system', { data: { nav: 'colors' } })
-              }, !YL.static.changeable],
-              [YL.util.getStrFa('picture-o') + YL.lang("Wallpaper"), function () {
-                YL.open('yl-system', { data: { nav: 'wallpaper' } })
-              }, !YL.static.changeable],
-            ]
+          [
+            [YL.util.getStrFa('paint-brush') + YL.lang("ThemeColor"), function () {
+              YL.open('yl-system', { data: { nav: 'colors' } })
+            }, !YL.static.changeable],
+            [YL.util.getStrFa('picture-o') + YL.lang("Wallpaper"), function () {
+              YL.open('yl-system', { data: { nav: 'wallpaper' } })
+            }, !YL.static.changeable],
+          ]
           ],
           [YL.util.getStrFa('cog') + YL.lang("SystemOptions"), function () {
             YL.open('yl-system')
@@ -1197,9 +1205,9 @@ YL.render = function (data) {
         ContextMenu.render(e, menu, this, "light");
       },
       desktopMouseMove: function (e) {
-        this.emitWinEvent(0, 'desktopMouseMove',{
-          x:e.x,
-          y:e.y,
+        this.emitWinEvent(0, 'desktopMouseMove', {
+          x: e.x,
+          y: e.y,
         });
       },
       shortcutOpen: function (s, id) {
@@ -1814,9 +1822,9 @@ YL.render = function (data) {
           that.contextMenuOpen(btn),
           that.contextMenuAddTo(objCopy),
           [YL.util.getStrFa('tags') + YL.lang("Rename") + "/" + YL.lang("Options"),
-            function (v) {
-              that.shortSetting = btn;
-            }, !YL.static.changeable],
+          function (v) {
+            that.shortSetting = btn;
+          }, !YL.static.changeable],
           "|",
           [
             YL.util.getStrFa('arrow-up') + YL.lang("ShiftUp"),
@@ -1928,7 +1936,7 @@ YL.render = function (data) {
           var y = e.pageY;
           that.startMenu.width += (x - startMenu.drag.x);
           (that.startMenu.width) > minWidth || (that.startMenu.width = minWidth);
-          that.startMenu.height -= (that.configs.topTaskBar?-1:1)*(y - startMenu.drag.y);
+          that.startMenu.height -= (that.configs.topTaskBar ? -1 : 1) * (y - startMenu.drag.y);
           (that.startMenu.height) > minHeight || (that.startMenu.height = minHeight);
           startMenu.drag.x = x;
           startMenu.drag.y = y;
@@ -2006,7 +2014,7 @@ YL.render = function (data) {
         var width = this.runtime.clientSize.width;
         if (this.runtime.isSmallScreen) {
           return {
-            left:  (48 + (this.runtime.menuOnLeft ? 0 : -width))+'px',
+            left: (48 + (this.runtime.menuOnLeft ? 0 : -width)) + 'px',
           }
         }
         else return {};

@@ -20,21 +20,6 @@ YL.onLoad(function () {
   } catch (ex) {
 
   }
-  // 监听数据变化
-  top.window.addEventListener('storage', function (e) {
-    // console.log(e);
-    if (e.key === 'ylui-storage') {
-      if (e.oldValue != e.newValue) {
-        // 更新
-        YL.static.post({
-          type: 'set',
-          data: e.newValue
-        }).then(res => {
-          console.log(res)
-        })
-      }
-    }
-  });
   // 加载数据
   YL.static.post({
     type: 'get'

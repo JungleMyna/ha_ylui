@@ -29,7 +29,13 @@ YL.static = {
   serialNumber: null,//序列号
   async post(data) {
     try {
-      let hass = top.document.querySelector('home-assistant').hass
+      let hass = null
+      let ha = top.document.querySelector('home-assistant')
+      if (ha) {
+        hass = ha.hass
+      } else {
+        hass = JSON.parse(localStorage['ylui-hass'])
+      }
       let { expired } = hass.auth
       // 过期
       if (expired) {
@@ -38,10 +44,16 @@ YL.static = {
       return fetch(`${top.location.pathname}-api`, {
         method: 'post',
         headers: {
+          'Content-Type': 'application/json; charset=utf-8',
           authorization: `${hass.auth.data.token_type} ${hass.auth.accessToken}`
         },
         body: JSON.stringify(data)
-      }).then(res => res.json())
+      }).then(res => res.json()).then(res=>{
+        if(res.code === 401){
+          top.location.href = 'login.html'
+        }
+        return res
+      })
     } catch (ex) {
       return Promise.reject(ex)
     }
