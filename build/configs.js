@@ -30,6 +30,7 @@ YL.static = {
   async post(data) {
     try {
       let hass = null
+      let url = `${top.location.pathname}-api`
       let ha = top.document.querySelector('home-assistant')
       if (ha) {
         hass = ha.hass
@@ -37,6 +38,7 @@ YL.static = {
         let h = localStorage['ylui-hass']
         if (h) {
           hass = JSON.parse(h)
+          url = '/ylui-api'
         } else {
           location.href = 'login.html'
         }
@@ -52,7 +54,7 @@ YL.static = {
       } else {
         authorization = `Bearer ${auth.data.access_token}`
       }
-      return fetch(`${top.location.pathname}-api`, {
+      return fetch(url, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',

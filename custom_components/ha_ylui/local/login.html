@@ -156,7 +156,7 @@
             let value = document.querySelector('.page-login input').value.trim()
             if (value) {
                 // console.log('开始登录')
-                fetch(`${top.location.pathname}-api`, {
+                fetch(`/ylui-api`, {
                     method: 'post',
                     headers: { 'Content-Type': 'application/json; charset=utf-8' },
                     body: JSON.stringify({

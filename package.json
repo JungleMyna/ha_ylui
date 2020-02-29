@@ -8,8 +8,7 @@
     "url": "https://github.com/yuri2peter/ylui"
   },
   "scripts": {
-    "start": "serve -s .",
-    "serve": "gulp serve"
+    "start": "gulp serve"
   },
   "window": {
     "title": "YLUI",
