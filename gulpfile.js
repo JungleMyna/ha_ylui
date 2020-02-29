@@ -45,9 +45,7 @@ const serviceWorker = () => {
       'build/image/os_windows.png',
       'build/image/login.jpg',
       'build/image/start.jpg',
-
-      'build/res/css/loading.css',
-      
+      'build/res/css/loading.css',      
       'build/res/yl.js',
       'build/langs/zh-cn.json',
       'build/res/components/jquery-2.2.4.min.js',
@@ -74,7 +72,7 @@ const serviceWorker = () => {
       'sw-toolbox.js',
       'js/toolbox-script.js'
     ],
-    stripPrefix: 'build'
+    stripPrefix: 'build/'
   });
 };
 gulp.task('service-worker', serviceWorker);
