@@ -34,22 +34,33 @@ YL.static = {
       if (ha) {
         hass = ha.hass
       } else {
-        hass = JSON.parse(localStorage['ylui-hass'])
+        let h = localStorage['ylui-hass']
+        if (h) {
+          hass = JSON.parse(h)
+        } else {
+          location.href = 'login.html'
+        }
       }
-      let { expired } = hass.auth
-      // 过期
-      if (expired) {
-        await hass.auth.refreshAccessToken()
+      let auth = hass.auth
+      let authorization = ''
+      if (auth._saveTokens) {
+        // 过期
+        if (auth.expired) {
+          await auth.refreshAccessToken()
+        }
+        authorization = `${auth.data.token_type} ${auth.accessToken}`
+      } else {
+        authorization = `Bearer ${auth.data.access_token}`
       }
       return fetch(`${top.location.pathname}-api`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
-          authorization: `${hass.auth.data.token_type} ${hass.auth.accessToken}`
+          authorization
         },
         body: JSON.stringify(data)
-      }).then(res => res.json()).then(res=>{
-        if(res.code === 401){
+      }).then(res => res.json()).then(res => {
+        if (res.code === 401) {
           top.location.href = 'login.html'
         }
         return res
