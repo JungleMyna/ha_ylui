@@ -72,7 +72,7 @@ const serviceWorker = () => {
       'sw-toolbox.js',
       'js/toolbox-script.js'
     ],
-    stripPrefix: 'build'
+    stripPrefix: 'build/'
   });
 };
 gulp.task('service-worker', serviceWorker);
@@ -87,7 +87,7 @@ const browserSyncOptions = {
   port: 8002
 };
 const serve = gulp.series(build, () => {
-  browserSync.init(browserSyncOptions);
+  // browserSync.init(browserSyncOptions);
   return gulp.watch(root_path + '/**/*', build).on('change', browserSync.reload);
 });
 
