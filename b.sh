@@ -5,6 +5,6 @@
 dirname="/home/www/ylui/"
 rm -rf $dirname
 mkdir $dirname
-cp -r ./custom_components/ha_ylui/local/* $dirname
+cp -r ./build/* $dirname
 
 echo 'success'

@@ -1,0 +1,55 @@
+.page-shop {
+  .app {
+    margin: 10px;
+    width: 320px;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0 3px 13px 5px #e0e0e0;
+    display: inline-block;
+    .cover {
+      width: 320px;
+      height: 210px;
+    }
+    .title {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .desc {
+      font-size: 14px;
+      color: gray;
+      margin-bottom: 10px;
+      height: 80px;
+    }
+    .btn-group {
+      text-align: right;
+      @mixin btn {
+        padding: 4px;
+        background: #1d7db1;
+        color: white;
+        display: inline-block;
+        text-align: center;
+        width: 20%;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          box-shadow: 0 2px 15px 2px #e6e6e6;
+        }
+      }
+      .setup {
+        @include btn;
+        &:hover {
+          background: #249bdc;
+        }
+      }
+      .open {
+        @include btn;
+        margin-right: 5px;
+        background: #a1a1a1;
+        &:hover {
+          background: #d2d2d2;
+        }
+      }
+    }
+  }
+}

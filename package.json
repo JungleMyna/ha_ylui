@@ -8,7 +8,8 @@
     "url": "https://github.com/yuri2peter/ylui"
   },
   "scripts": {
-    "start": "serve -s ."
+    "start": "serve -s .",
+    "serve": "gulp serve"
   },
   "window": {
     "title": "YLUI",
@@ -31,7 +32,13 @@
     "java": false,
     "page-cache": false
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.24.6",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "sw-precache": "^4.3.0",
+    "sw-toolbox": "^3.6.0"
+  },
   "dependencies": {
     "serve": "^11.1.0"
   }
