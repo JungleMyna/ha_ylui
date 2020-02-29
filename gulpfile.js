@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const fs = require('fs')
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
 const del = require('del');
@@ -72,7 +73,7 @@ const serviceWorker = () => {
       'sw-toolbox.js',
       'js/toolbox-script.js'
     ],
-    stripPrefix: 'build/'
+    stripPrefix: ''
   });
 };
 gulp.task('service-worker', serviceWorker);
@@ -88,7 +89,10 @@ const browserSyncOptions = {
 };
 const serve = gulp.series(build, () => {
   // browserSync.init(browserSyncOptions);
-  return gulp.watch(root_path + '/**/*', build).on('change', browserSync.reload);
+  // return gulp.watch(root_path + '/**/*', build).on('change', browserSync.reload);
+    let fn = 'build/sw.js'
+    let content = fs.readFileSync(fn,'utf8')
+    fs.writeFileSync(fn, content.replace(new RegExp('build/','g'),'/ylui/')) 
 });
 
 gulp.task('serve', serve);
