@@ -24,7 +24,7 @@ const root_path = 'custom_components/ha_ylui/local'
 
 // Clean "build" directory
 const clean = () => {
-  return del(['build/*'], {dot: true});
+  return del(['build/*'], { dot: true });
 };
 gulp.task('clean', clean);
 
@@ -34,6 +34,7 @@ const copy = () => {
 };
 gulp.task('copy', copy);
 
+const ver = '?v=2.1.9'
 
 // Generate a service worker with sw-precache
 const serviceWorker = () => {
@@ -42,32 +43,33 @@ const serviceWorker = () => {
       'build/login.html',
       'build/index.html',
       'build/configs.js',
-      'build/onLoad.js',
+      'build/onLoad.js' + ver,
       'build/image/os_windows.png',
       'build/image/login.jpg',
       'build/image/start.jpg',
-      'build/res/css/loading.css',      
-      'build/res/yl.js',
+      'build/res/css/loading.css' + ver,
+      'build/res/yl.js' + ver,
       'build/langs/zh-cn.json',
       'build/res/components/jquery-2.2.4.min.js',
-      'build/res/css/main.css',
-      'build/res/css/yl-layer-skin.css',
+      'build/res/css/main.css' + ver,
+      'build/res/css/yl-layer-skin.css' + ver,
       'build/res/components/layer-v3.0.3/layer/skin/default/layer.css',
-      'build/res/css/tiles.css',
+      'build/res/css/tiles.css' + ver,
       'build/res/components/animate.css',
       'build/res/components/font-awesome-4.7.0/css/font-awesome.min.css',
-      'build/res/components/calendar/style.css',
-      'build/res/js/Yuri2.js',
+      'build/res/components/calendar/style.css' + ver,
+      'build/res/js/Yuri2.js' + ver,
       'build/res/components/vue.min.js',
-      'build/res/js/yl-render.js',
-      'build/res/js/yl-io.js',
-      'build/res/components/calendar/script.js',
+      'build/res/js/yl-render.js' + ver,
+      'build/res/js/yl-io.js' + ver,
+      'build/res/components/calendar/script.js' + ver,
       'build/res/components/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2',
       'build/res/components/vue-grid-layout-2.1.11.min.js',
       'build/res/js/yl-vue-component-icon.js',
       'build/res/js/yl-vue-components.js',
       'build/res/components/layer-v3.0.3/layer/layer.full.js',
       'build/saves/basic.json',
+      'build/res/components/contextMenu/contextMenu.js' + ver,
     ],
     importScripts: [
       'sw-toolbox.js',
@@ -90,9 +92,9 @@ const browserSyncOptions = {
 const serve = gulp.series(build, () => {
   // browserSync.init(browserSyncOptions);
   // return gulp.watch(root_path + '/**/*', build).on('change', browserSync.reload);
-    let fn = 'build/sw.js'
-    let content = fs.readFileSync(fn,'utf8')
-    fs.writeFileSync(fn, content.replace(new RegExp('build/','g'),'/ylui/')) 
+  let fn = 'build/sw.js'
+  let content = fs.readFileSync(fn, 'utf8')
+  fs.writeFileSync(fn, content.replace(new RegExp('build/', 'g'), '/ylui/'))
 });
 
 gulp.task('serve', serve);
