@@ -78,7 +78,7 @@ YLApp.onReady(function () {
       desc: 'Aria2下载管理，开启服务命令：aria2c --enable-rpc --rpc-listen-all --rpc-secret=密码令牌',
       open: _.merge(getAppDataTemplate(), {
         title: 'Aria2',
-        url: urlStore + '/apps/webui-aria2/index.html',
+        url: 'https://ziahamza.github.io/webui-aria2/',
         "icon": {
           "type": "fa",
           "content": "cloud-download",
@@ -89,7 +89,7 @@ YLApp.onReady(function () {
         apps: {
           'ylui-apps-aria2': _.merge(getAppDataTemplate(), {
             title: 'Aria2',
-            url: urlStore + '/apps/webui-aria2/index.html',
+            url: 'https://ziahamza.github.io/webui-aria2/',
             "icon": {
               "type": "fa",
               "content": "cloud-download",

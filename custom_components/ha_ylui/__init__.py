@@ -8,6 +8,7 @@ from aiohttp import web
 import voluptuous as vol
 from homeassistant.components.weblink import Link
 from homeassistant.components.http import HomeAssistantView
+from .api_config import ApiConfig
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -34,7 +35,16 @@ def setup(hass, config):
         require_admin=True)
 
     hass.http.register_view(HassGateView)
-    # Return boolean to indicate that initialization was successfully.
+    hass.app[DOMAIN] = ApiConfig(hass.config.path('./.storage'))
+    # 显示插件信息
+    _LOGGER.info('''
+-------------------------------------------------------------------
+    Web桌面【作者QQ：635147515】
+    
+    版本：''' + VERSION + '''    
+        
+    项目地址：https://github.com/shaonianzhentan/ha_ylui
+-------------------------------------------------------------------''')
     return True
 
 class HassGateView(HomeAssistantView):
@@ -45,60 +55,26 @@ class HassGateView(HomeAssistantView):
     
     async def post(self, request):
         hass = request.app["hass"]
+        api = hass.app[DOMAIN]
+        cfg_file = 'ha_ylui.config'
         try:
-            res = await request.json()
-            local = hass.config.path(".storage")
-            cfg_file = local + '/ha_ylui.config'
+            res = await request.json()            
             _type = res['type']
             if _type == 'set':
-                fd = open(cfg_file, mode="w", encoding="utf-8")
-                fd.write(res['data'])
-                fd.close()
+                api.write(cfg_file, res['data'])
                 return self.json({'code': 0, 'msg': '保存成功'})
             elif _type == 'get':
-                fd = open(cfg_file, mode="r", encoding="utf-8")
-                _str = fd.read()
-                fd.close()
-                return self.json({
-                    'code': 0,
-                    'data': json.loads(_str)
-                })
-            elif _type == 'get_listdir':
-                # 获取文件列表
-                _p = ''
-                if 'path' in res:
-                    _p = res['path']
-                _path = hass.config.path("./" + _p)
-                files = os.listdir(_path)
-                _list = []
-                for f in files:
-                    _list.append({
-                        'name': f,
-                        'isdir': os.path.isdir(_path+ '/' + f)
+                res = api.read(cfg_file)
+                if res is None:
+                    return self.json({
+                        'code': 1,
+                        'msg': '没有配置'
                     })
-                return self.json({
-                    'code': 0,
-                    'data': _list
-                })
-            elif _type == 'file_read':
-                # 读取文件
-                _p = res['path']
-                _path = hass.config.path("./" + _p)
-                fd = open(_path, mode="r", encoding="utf-8")
-                _str = fd.read()
-                fd.close()
-                return self.json({
-                    'code': 0,
-                    'data': _str
-                })
-            elif _type == 'file_save':
-                # 写入文件
-                _p = res['path']
-                _path = hass.config.path("./" + _p)
-                fd = open(_path, mode="w", encoding="utf-8")
-                fd.write(res['data'])
-                fd.close()
-                return self.json({'code': 0, 'msg': '保存成功'})
+                else:
+                    return self.json({
+                        'code': 0,
+                        'data': res
+                    })
         except Exception as e:
             print(e)
             return self.json({'code':1, 'msg': '出现异常'})
