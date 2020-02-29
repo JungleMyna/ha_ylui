@@ -23,56 +23,56 @@ const root_path = 'custom_components/ha_ylui/local'
 
 // Clean "build" directory
 const clean = () => {
-  return del(['ylui/*'], {dot: true});
+  return del(['build/*'], {dot: true});
 };
 gulp.task('clean', clean);
 
 // Copy "app" directory to "build" directory
 const copy = () => {
-  return gulp.src([root_path + '/**/*']).pipe(gulp.dest('ylui'));
+  return gulp.src([root_path + '/**/*']).pipe(gulp.dest('build'));
 };
 gulp.task('copy', copy);
 
 
 // Generate a service worker with sw-precache
 const serviceWorker = () => {
-  return swPrecache.write('ylui/sw.js', {
+  return swPrecache.write('build/sw.js', {
     staticFileGlobs: [
-      'ylui/login.html',
-      'ylui/index.html',
-      'ylui/configs.js',
-      'ylui/onLoad.js',
-      'ylui/image/os_windows.png',
-      'ylui/image/login.jpg',
-      'ylui/image/start.jpg',
-      'ylui/res/css/loading.css',      
-      'ylui/res/yl.js',
-      'ylui/langs/zh-cn.json',
-      'ylui/res/components/jquery-2.2.4.min.js',
-      'ylui/res/css/main.css',
-      'ylui/res/css/yl-layer-skin.css',
-      'ylui/res/components/layer-v3.0.3/layer/skin/default/layer.css',
-      'ylui/res/css/tiles.css',
-      'ylui/res/components/animate.css',
-      'ylui/res/components/font-awesome-4.7.0/css/font-awesome.min.css',
-      'ylui/res/components/calendar/style.css',
-      'ylui/res/js/Yuri2.js',
-      'ylui/res/components/vue.min.js',
-      'ylui/res/js/yl-render.js',
-      'ylui/res/js/yl-io.js',
-      'ylui/res/components/calendar/script.js',
-      'ylui/res/components/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2',
-      'ylui/res/components/vue-grid-layout-2.1.11.min.js',
-      'ylui/res/js/yl-vue-component-icon.js',
-      'ylui/res/js/yl-vue-components.js',
-      'ylui/res/components/layer-v3.0.3/layer/layer.full.js',
-      'ylui/saves/basic.json',
+      'build/login.html',
+      'build/index.html',
+      'build/configs.js',
+      'build/onLoad.js',
+      'build/image/os_windows.png',
+      'build/image/login.jpg',
+      'build/image/start.jpg',
+      'build/res/css/loading.css',      
+      'build/res/yl.js',
+      'build/langs/zh-cn.json',
+      'build/res/components/jquery-2.2.4.min.js',
+      'build/res/css/main.css',
+      'build/res/css/yl-layer-skin.css',
+      'build/res/components/layer-v3.0.3/layer/skin/default/layer.css',
+      'build/res/css/tiles.css',
+      'build/res/components/animate.css',
+      'build/res/components/font-awesome-4.7.0/css/font-awesome.min.css',
+      'build/res/components/calendar/style.css',
+      'build/res/js/Yuri2.js',
+      'build/res/components/vue.min.js',
+      'build/res/js/yl-render.js',
+      'build/res/js/yl-io.js',
+      'build/res/components/calendar/script.js',
+      'build/res/components/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2',
+      'build/res/components/vue-grid-layout-2.1.11.min.js',
+      'build/res/js/yl-vue-component-icon.js',
+      'build/res/js/yl-vue-components.js',
+      'build/res/components/layer-v3.0.3/layer/layer.full.js',
+      'build/saves/basic.json',
     ],
     importScripts: [
       'sw-toolbox.js',
       'js/toolbox-script.js'
     ],
-    stripPrefix: ''
+    stripPrefix: 'build'
   });
 };
 gulp.task('service-worker', serviceWorker);
@@ -87,7 +87,7 @@ const browserSyncOptions = {
   port: 8002
 };
 const serve = gulp.series(build, () => {
-  // browserSync.init(browserSyncOptions);
+  browserSync.init(browserSyncOptions);
   return gulp.watch(root_path + '/**/*', build).on('change', browserSync.reload);
 });
 
